@@ -10,7 +10,12 @@ print_gscaLCA = function(c, nobs, nobs.origin, Boot.num, Boot.num.im, model.fit.
       paste0("number of used observations: ", nobs), "\n",
       paste0("number of deleted observations: ", nobs.origin - nobs),"\n",
       paste0("number of bootstrap for SE: ",Boot.num.im ),"/",Boot.num, "\n")
-  #     paste0("number of bootstrap for SE: ",Boot.num - (length(model.fit)-1)),"\n")
+  if(Boot.num.im!=Boot.num){
+    cat("\n")
+    cat("NOTE: The smaller number of bootstraps for SE may be due to the smaller number of latent classes than the expected one or having almost identical classes.")
+    cat("\n")
+  }
+
 
   cat("\n")
 
@@ -20,7 +25,7 @@ print_gscaLCA = function(c, nobs, nobs.origin, Boot.num, Boot.num.im, model.fit.
       "FPI      : ", sprintf("%.4f", model.fit.result[3,"Estimate"]), "\n",
       "NCE      : ", sprintf("%.4f", model.fit.result[4,"Estimate"]), "\n", "\n")
 
-  cat("Estimated Latent Class Prevalances (%) ------------------\n",
+  cat("Estimated Latent Class Prevalence (%) ------------------\n",
       paste0(sprintf("%.2f", LCprevalence.result[,"Percent"]), "%"), "\n", "\n")
 
 
@@ -30,8 +35,10 @@ print_gscaLCA = function(c, nobs, nobs.origin, Boot.num, Boot.num.im, model.fit.
                                   x[,1:3] }))
 
   if(!is.null(print.cov.output) & !is.null(cov_results.multi.hard)){
-    cat("Relationship Between Prevalances and Covariates -------\n ")
+    cat("Relationship Between Prevalence and Covariates -------\n ")
 
+    if(!(print.cov.output %in% c("multinomial.hard", "binomial.hard",
+                                 "multinomial.soft", "binomial.soft"))) stop ("Please put an option among \"multinomial.hard\", \"binomial.hard\", \"multinomial.soft\", and \"binomial.soft\".")
     if(print.cov.output == "multinomial.hard"){
     cat("Multinomial logistic regression is applied with hard partitioning \n ")
       cov_results.print = lapply(cov_results.multi.hard, function(y)

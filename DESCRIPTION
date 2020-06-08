@@ -2,7 +2,7 @@ Package: gscaLCA
 Type: Package
 Title: Generalized Structure Component Analysis- Latent Class Analysis
         & Latent Class Regression
-Version: 0.0.3
+Version: 0.0.5
 Authors@R: c(
               person("Jihoon", "Ryoo",
                   role = c("aut")),
@@ -25,11 +25,11 @@ Imports: gridExtra, ggplot2, stringr, progress, psych, fastDummies,
 Suggests: knitr, rmarkdown
 RoxygenNote: 7.1.0
 NeedsCompilation: no
-Packaged: 2020-05-25 14:47:56 UTC; Spenser
+Packaged: 2020-06-08 19:43:11 UTC; Spenser
 Author: Jihoon Ryoo [aut],
   Seohee Park [aut, cre],
   Seoungeun Kim [aut],
   heungsun Hwaung [aut]
 Maintainer: Seohee Park <hee6904@gmail.com>
 Repository: CRAN
-Date/Publication: 2020-05-25 21:20:09 UTC
+Date/Publication: 2020-06-08 21:30:02 UTC
